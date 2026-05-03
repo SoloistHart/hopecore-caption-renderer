@@ -1,0 +1,23 @@
+name: Render Hopecore Caption
+
+on:
+  repository_dispatch:
+    types: [render-hopecore-caption]
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run renderer
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+        run: node src/render-job.js

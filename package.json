@@ -1,0 +1,14 @@
+{
+  "name": "caption-renderer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone hopecore caption renderer worker for GitHub Actions or container hosting.",
+  "scripts": {
+    "render": "node src/render-job.js",
+    "check": "node --check src/build-ass.js && node --check src/render-job.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
