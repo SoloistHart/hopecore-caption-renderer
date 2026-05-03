@@ -32,27 +32,31 @@ Example:
 ```json
 {
   "job_id": "row_123_caption_v1",
-  "talking_avatar_video_url": "https://example.com/talking-avatar.mp4",
-  "voice_audio_url": "https://example.com/voice.mp3",
-  "timed_words": [
-    { "text": "INSTEAD", "start": 0.1, "end": 0.6 },
-    { "text": "I", "start": 0.62, "end": 0.7 },
-    { "text": "TRY", "start": 0.72, "end": 0.95 },
-    { "text": "TO", "start": 0.98, "end": 1.1 },
-    { "text": "FEEL", "start": 1.12, "end": 1.42 }
-  ],
-  "timing_split": {
-    "talking_avatar_end": 3.8,
-    "black_screen_end": 8.2
-  },
-  "caption_style_preset": "bold uppercase rainbow word-by-word",
   "callback_url": "https://example.com/webhook",
   "callback_secret": "shared-secret",
-  "upload_url": "https://example.com/presigned-put-url"
+  "upload_url": "https://example.com/presigned-put-url",
+  "payload": {
+    "talking_avatar_video_url": "https://example.com/talking-avatar.mp4",
+    "voice_audio_url": "https://example.com/voice.mp3",
+    "timed_words": [
+      { "text": "INSTEAD", "start": 0.1, "end": 0.6 },
+      { "text": "I", "start": 0.62, "end": 0.7 },
+      { "text": "TRY", "start": 0.72, "end": 0.95 },
+      { "text": "TO", "start": 0.98, "end": 1.1 },
+      { "text": "FEEL", "start": 1.12, "end": 1.42 }
+    ],
+    "timing_split": {
+      "talking_avatar_end": 3.8,
+      "black_screen_end": 8.2
+    },
+    "caption_style_preset": "bold uppercase rainbow word-by-word"
+  },
 }
 ```
 
 `upload_url` is optional for development, but required for automation if you want the renderer to return a public file URL.
+
+The nesting under `payload` is intentional so the GitHub `repository_dispatch` request stays under the 10 top-level property limit.
 
 ## GitHub Actions Shape
 

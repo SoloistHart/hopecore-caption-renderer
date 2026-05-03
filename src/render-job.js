@@ -21,6 +21,20 @@ function extractClientPayload(eventPayload) {
   return eventPayload?.client_payload || eventPayload;
 }
 
+function normalizePayload(clientPayload) {
+  if (clientPayload?.payload && typeof clientPayload.payload === 'object') {
+    return {
+      ...clientPayload.payload,
+      job_id: clientPayload.job_id,
+      callback_url: clientPayload.callback_url,
+      callback_secret: clientPayload.callback_secret,
+      upload_url: clientPayload.upload_url,
+    };
+  }
+
+  return clientPayload;
+}
+
 async function downloadFile(url, filePath) {
   const response = await fetch(url);
   if (!response.ok || !response.body) {
@@ -130,7 +144,7 @@ async function postCallback({ callbackUrl, callbackSecret, body }) {
 
 async function main() {
   const eventPayload = await getEventPayload();
-  const payload = extractClientPayload(eventPayload);
+  const payload = normalizePayload(extractClientPayload(eventPayload));
 
   const jobId = requireField(payload, 'job_id');
   const talkingAvatarVideoUrl = requireField(payload, 'talking_avatar_video_url');
