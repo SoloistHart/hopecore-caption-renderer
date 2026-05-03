@@ -20,6 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
       - name: Run renderer
         env:
           GITHUB_EVENT_PATH: ${{ github.event_path }}
