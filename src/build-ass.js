@@ -26,6 +26,10 @@ function sanitizeText(value) {
     .trim();
 }
 
+function getWordText(word) {
+  return sanitizeText(word?.text ?? word?.word ?? '');
+}
+
 function toAssTime(seconds) {
   const safe = Math.max(0, Number(seconds) || 0);
   const hours = Math.floor(safe / 3600);
@@ -46,15 +50,15 @@ function splitBySection(words, timingSplit) {
 }
 
 function createPhraseGroups(words, section) {
-  const sectionWords = words.filter((word) => word.section === section && sanitizeText(word.text));
+  const sectionWords = words.filter((word) => word.section === section && getWordText(word));
   const groups = [];
   let current = [];
 
   for (const word of sectionWords) {
     current.push(word);
 
-    const combinedText = current.map((item) => sanitizeText(item.text)).join(' ');
-    const hitPunctuation = /[.!?,]$/.test(sanitizeText(word.text));
+    const combinedText = current.map((item) => getWordText(item)).join(' ');
+    const hitPunctuation = /[.!?,]$/.test(getWordText(word));
     const hitSize = current.length >= (section === 'black_screen' ? 4 : 3);
     const hitLength = combinedText.length >= (section === 'black_screen' ? 22 : 18);
 
@@ -76,7 +80,7 @@ function pickEmphasisIndex(group) {
   let longest = -1;
 
   group.forEach((word, index) => {
-    const length = sanitizeText(word.text).length;
+    const length = getWordText(word).length;
     if (length > longest) {
       longest = length;
       emphasisIndex = index;
@@ -120,7 +124,7 @@ function buildDialogueLines(groups, section) {
     const holdEnd = groupEnd + (section === 'black_screen' ? 0.2 : 0.12);
 
     group.forEach((word, wordIndex) => {
-      const text = sanitizeText(word.text).toUpperCase();
+      const text = getWordText(word).toUpperCase();
       const overrides = section === 'black_screen'
         ? buildBlackScreenOverrides(groupIndex, wordIndex, emphasisIndex, wordIndex)
         : buildTalkingAvatarOverrides(groupIndex, wordIndex, emphasisIndex, wordIndex);
