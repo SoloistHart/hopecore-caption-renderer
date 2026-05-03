@@ -4,6 +4,10 @@
   "private": true,
   "type": "module",
   "description": "Standalone hopecore caption renderer worker for GitHub Actions or container hosting.",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.863.0",
+    "@aws-sdk/s3-request-presigner": "^3.863.0"
+  },
   "scripts": {
     "render": "node src/render-job.js",
     "check": "node --check src/build-ass.js && node --check src/render-job.js"

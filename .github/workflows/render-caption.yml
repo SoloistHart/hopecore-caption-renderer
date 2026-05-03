@@ -7,6 +7,14 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
+    env:
+      B2_BUCKET: ${{ secrets.B2_BUCKET }}
+      B2_ENDPOINT: ${{ secrets.B2_ENDPOINT }}
+      B2_KEY_ID: ${{ secrets.B2_KEY_ID }}
+      B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+      B2_REGION: ${{ secrets.B2_REGION }}
+      B2_KEY_PREFIX: ${{ secrets.B2_KEY_PREFIX }}
+      B2_DOWNLOAD_URL_TTL_SECONDS: ${{ secrets.B2_DOWNLOAD_URL_TTL_SECONDS }}
 
     steps:
       - name: Checkout repository
@@ -17,11 +25,14 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Debug payload
         run: echo '${{ toJson(github.event.client_payload) }}'
 
       - name: Smoke-test callback
-        if: ${{ !github.event.client_payload.upload_url }}
+        if: ${{ !github.event.client_payload.upload_url && !env.B2_BUCKET }}
         env:
           CALLBACK_URL: ${{ github.event.client_payload.callback_url }}
           CALLBACK_SECRET: ${{ github.event.client_payload.callback_secret }}
@@ -33,5 +44,5 @@ jobs:
             -d "{\"job_id\":\"$JOB_ID\",\"status\":\"completed\",\"act1_act2_captioned_url\":\"https://example.com/test.mp4\",\"mode\":\"smoke-test\"}"
 
       - name: Run caption render job
-        if: ${{ github.event.client_payload.upload_url }}
+        if: ${{ github.event.client_payload.upload_url || env.B2_BUCKET }}
         run: node src/render-job.js

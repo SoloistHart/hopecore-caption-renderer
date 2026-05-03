@@ -71,12 +71,29 @@ The example workflow file is still available at [examples/github-actions-render-
 
 If `upload_url` is empty, the production workflow can still run in smoke-test mode and call the n8n callback with a placeholder URL. That lets you validate the dispatch and callback plumbing before storage is wired.
 
+If you configure Backblaze B2 secrets in GitHub Actions, `upload_url` can stay empty and the worker will upload directly to B2 instead of using smoke-test mode.
+
 ## Development Notes
 
 - This worker uses only Node built-ins and expects `ffmpeg` to be installed in the runtime.
 - GitHub-hosted Ubuntu runners already include `ffmpeg`.
+- Direct Backblaze uploads use the AWS S3-compatible SDK because B2 exposes an S3-compatible endpoint.
 - The `.ass` generator is in [src/build-ass.js](./src/build-ass.js).
 - The render pipeline entry point is in [src/render-job.js](./src/render-job.js).
+
+## Backblaze B2 Setup
+
+To upload rendered clips directly from GitHub Actions to a private Backblaze B2 bucket, add these repository secrets:
+
+- `B2_BUCKET`
+- `B2_ENDPOINT`
+- `B2_KEY_ID`
+- `B2_APPLICATION_KEY`
+- optional: `B2_REGION`
+- optional: `B2_KEY_PREFIX` (defaults to `renders/`)
+- optional: `B2_DOWNLOAD_URL_TTL_SECONDS` (defaults to `86400`)
+
+With those secrets set, the worker uploads the finished MP4 to Backblaze and returns a signed download URL in the callback payload.
 
 ## Current Output Strategy
 

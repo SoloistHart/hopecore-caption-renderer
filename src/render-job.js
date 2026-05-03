@@ -3,6 +3,8 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawn } from 'node:child_process';
 import { pipeline } from 'node:stream/promises';
+import { GetObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { buildAssFromWords } from './build-ass.js';
 
 function getEventPayload() {
@@ -102,7 +104,53 @@ function escapeFilterPath(filePath) {
   return filePath.replace(/\\/g, '/').replace(/:/g, '\\:');
 }
 
-async function uploadResult(uploadUrl, outputPath) {
+function sanitizePathPart(value) {
+  return String(value ?? '')
+    .replace(/[^a-zA-Z0-9._-]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 120) || 'render';
+}
+
+function normalizeB2Endpoint(value) {
+  if (!value) {
+    return '';
+  }
+
+  return /^https?:\/\//i.test(value) ? value : `https://${value}`;
+}
+
+function deriveB2Region(endpoint) {
+  const hostname = endpoint.replace(/^https?:\/\//i, '').split('/')[0];
+  const match = hostname.match(/^s3[.-]([a-z0-9-]+)\./i);
+  return match?.[1] || 'us-east-1';
+}
+
+function resolveB2StorageConfig() {
+  const bucket = process.env.B2_BUCKET?.trim();
+  const endpoint = normalizeB2Endpoint(process.env.B2_ENDPOINT?.trim());
+  const keyId = process.env.B2_KEY_ID?.trim();
+  const applicationKey = process.env.B2_APPLICATION_KEY?.trim();
+
+  if (!bucket || !endpoint || !keyId || !applicationKey) {
+    return null;
+  }
+
+  const configuredPrefix = process.env.B2_KEY_PREFIX?.trim() || 'renders/';
+  const keyPrefix = configuredPrefix.endsWith('/') ? configuredPrefix : `${configuredPrefix}/`;
+  const ttlSeconds = Number(process.env.B2_DOWNLOAD_URL_TTL_SECONDS || 86400);
+
+  return {
+    bucket,
+    endpoint,
+    region: process.env.B2_REGION?.trim() || deriveB2Region(endpoint),
+    keyId,
+    applicationKey,
+    keyPrefix,
+    downloadUrlTtlSeconds: Number.isFinite(ttlSeconds) && ttlSeconds > 0 ? Math.floor(ttlSeconds) : 86400,
+  };
+}
+
+async function uploadResultToPresignedUrl(uploadUrl, outputPath) {
   if (!uploadUrl) {
     return null;
   }
@@ -121,6 +169,53 @@ async function uploadResult(uploadUrl, outputPath) {
   }
 
   return uploadUrl.split('?')[0];
+}
+
+async function uploadResultToBackblaze({ outputPath, jobId }) {
+  const storage = resolveB2StorageConfig();
+  if (!storage) {
+    return null;
+  }
+
+  const objectKey = `${storage.keyPrefix}${sanitizePathPart(jobId)}-${Date.now()}.mp4`;
+  const fileBuffer = await fs.readFile(outputPath);
+  const client = new S3Client({
+    region: storage.region,
+    endpoint: storage.endpoint,
+    forcePathStyle: true,
+    credentials: {
+      accessKeyId: storage.keyId,
+      secretAccessKey: storage.applicationKey,
+    },
+  });
+
+  await client.send(new PutObjectCommand({
+    Bucket: storage.bucket,
+    Key: objectKey,
+    Body: fileBuffer,
+    ContentType: 'video/mp4',
+  }));
+
+  return getSignedUrl(client, new GetObjectCommand({
+    Bucket: storage.bucket,
+    Key: objectKey,
+  }), {
+    expiresIn: storage.downloadUrlTtlSeconds,
+  });
+}
+
+async function uploadResult({ uploadUrl, outputPath, jobId }) {
+  const presignedUrl = await uploadResultToPresignedUrl(uploadUrl, outputPath);
+  if (presignedUrl) {
+    return presignedUrl;
+  }
+
+  const backblazeUrl = await uploadResultToBackblaze({ outputPath, jobId });
+  if (backblazeUrl) {
+    return backblazeUrl;
+  }
+
+  throw new Error('No upload target configured. Provide client_payload.upload_url or set B2_* environment variables.');
 }
 
 async function postCallback({ callbackUrl, callbackSecret, body }) {
@@ -233,7 +328,11 @@ async function main() {
       outputPath,
     ], workingDir);
 
-    const publicUrl = await uploadResult(payload.upload_url, outputPath);
+    const publicUrl = await uploadResult({
+      uploadUrl: payload.upload_url,
+      outputPath,
+      jobId,
+    });
 
     await postCallback({
       callbackUrl: payload.callback_url,
@@ -258,6 +357,11 @@ async function main() {
     throw error;
   }
 }
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
 
 main().catch((error) => {
   console.error(error);
