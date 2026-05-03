@@ -1,4 +1,4 @@
-name: Render Hopecore Caption
+name: Render Caption
 
 on:
   repository_dispatch:
@@ -9,15 +9,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Run renderer
+      - name: Debug payload
+        run: echo '${{ toJson(github.event.client_payload) }}'
+
+      - name: Smoke-test callback
+        if: ${{ !github.event.client_payload.upload_url }}
         env:
-          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          CALLBACK_URL: ${{ github.event.client_payload.callback_url }}
+          CALLBACK_SECRET: ${{ github.event.client_payload.callback_secret }}
+          JOB_ID: ${{ github.event.client_payload.job_id }}
+        run: |
+          curl -X POST "$CALLBACK_URL" \
+            -H "Content-Type: application/json" \
+            -H "x-renderer-secret: $CALLBACK_SECRET" \
+            -d "{\"job_id\":\"$JOB_ID\",\"status\":\"completed\",\"act1_act2_captioned_url\":\"https://example.com/test.mp4\",\"mode\":\"smoke-test\"}"
+
+      - name: Run caption render job
+        if: ${{ github.event.client_payload.upload_url }}
         run: node src/render-job.js

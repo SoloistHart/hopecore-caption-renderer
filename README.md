@@ -61,7 +61,11 @@ Recommended trigger:
 - `repository_dispatch`
 - event type: `render-hopecore-caption`
 
-An example workflow file is in [examples/github-actions-render-caption.yml](./examples/github-actions-render-caption.yml).
+The production workflow file should live at `.github/workflows/render-caption.yml`.
+
+The example workflow file is still available at [examples/github-actions-render-caption.yml](./examples/github-actions-render-caption.yml).
+
+If `upload_url` is empty, the production workflow can still run in smoke-test mode and call the n8n callback with a placeholder URL. That lets you validate the dispatch and callback plumbing before storage is wired.
 
 ## Development Notes
 
