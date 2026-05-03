@@ -14,10 +14,6 @@ const DEFAULT_COLORS = [
   '&H00A784FF',
 ];
 
-function clamp(value, min, max) {
-  return Math.max(min, Math.min(max, value));
-}
-
 function sanitizeText(value) {
   return String(value ?? '')
     .replace(/\\/g, '\\\\')
@@ -43,8 +39,9 @@ function toAssTime(seconds) {
 function splitBySection(words, timingSplit) {
   const talkEnd = Number(timingSplit?.talking_avatar_end || 0);
 
-  return words.map((word) => ({
+  return words.map((word, index) => ({
     ...word,
+    index: Number.isFinite(Number(word?.index)) ? Number(word.index) : index,
     section: Number(word.start) < talkEnd ? 'talking_avatar' : 'black_screen',
   }));
 }
@@ -59,8 +56,8 @@ function createPhraseGroups(words, section) {
 
     const combinedText = current.map((item) => getWordText(item)).join(' ');
     const hitPunctuation = /[.!?,]$/.test(getWordText(word));
-    const hitSize = current.length >= (section === 'black_screen' ? 4 : 3);
-    const hitLength = combinedText.length >= (section === 'black_screen' ? 22 : 18);
+    const hitSize = current.length >= (section === 'black_screen' ? 5 : 4);
+    const hitLength = combinedText.length >= (section === 'black_screen' ? 28 : 20);
 
     if (hitPunctuation || hitSize || hitLength) {
       groups.push(current);
@@ -75,64 +72,105 @@ function createPhraseGroups(words, section) {
   return groups;
 }
 
-function pickEmphasisIndex(group) {
-  let emphasisIndex = 0;
-  let longest = -1;
+function getSectionLayout(section) {
+  if (section === 'black_screen') {
+    return {
+      anchorX: 180,
+      anchorY: 760,
+      maxCharsPerLine: 14,
+      maxWordsPerLine: 3,
+      baseFontSize: 82,
+      activeFontSize: 132,
+      border: 14,
+    };
+  }
 
-  group.forEach((word, index) => {
-    const length = getWordText(word).length;
-    if (length > longest) {
-      longest = length;
-      emphasisIndex = index;
+  return {
+    anchorX: 260,
+    anchorY: 520,
+    maxCharsPerLine: 12,
+    maxWordsPerLine: 3,
+    baseFontSize: 66,
+    activeFontSize: 118,
+    border: 12,
+  };
+}
+
+function wrapWords(words, { maxCharsPerLine, maxWordsPerLine }) {
+  const lines = [];
+  let currentLine = [];
+  let currentLength = 0;
+
+  for (const word of words) {
+    const text = getWordText(word);
+    const projectedLength = currentLine.length === 0 ? text.length : currentLength + 1 + text.length;
+
+    if (
+      currentLine.length > 0
+      && (currentLine.length >= maxWordsPerLine || projectedLength > maxCharsPerLine)
+    ) {
+      lines.push(currentLine);
+      currentLine = [];
+      currentLength = 0;
     }
-  });
 
-  return emphasisIndex;
+    currentLine.push(word);
+    currentLength = currentLine.length === 1 ? text.length : currentLength + 1 + text.length;
+  }
+
+  if (currentLine.length > 0) {
+    lines.push(currentLine);
+  }
+
+  return lines;
 }
 
-function buildTalkingAvatarOverrides(groupIndex, wordIndex, emphasisIndex, colorIndex) {
-  const baseY = 1390;
-  const lineHeight = 118;
-  const perWordX = [540, 540, 540];
-  const perWordY = [baseY, baseY + lineHeight, baseY + (lineHeight * 2)];
-  const fontSize = wordIndex === emphasisIndex ? 128 : 88;
-  const rotation = wordIndex === emphasisIndex ? 0 : (wordIndex % 2 === 0 ? -2 : 2);
-  const color = DEFAULT_COLORS[(groupIndex + colorIndex) % DEFAULT_COLORS.length];
+function buildLineText({ lineWords, activeWordIndex, groupIndex, lineIndex, layout }) {
+  return lineWords.map((word, wordIndex) => {
+    const text = getWordText(word).toUpperCase();
+    const isActive = word.index === activeWordIndex;
+    const color = DEFAULT_COLORS[(groupIndex + lineIndex + wordIndex) % DEFAULT_COLORS.length];
+    const fontSize = isActive ? layout.activeFontSize : layout.baseFontSize;
 
-  return `\\an5\\pos(${perWordX[wordIndex] ?? 540},${perWordY[wordIndex] ?? (baseY + (wordIndex * lineHeight))})\\fs${fontSize}\\bord16\\shad0\\frz${rotation}\\1c${color}`;
+    return `{\\fs${fontSize}\\bord${layout.border}\\shad0\\1c${color}}${text}`;
+  }).join(' ');
 }
 
-function buildBlackScreenOverrides(groupIndex, wordIndex, emphasisIndex, colorIndex) {
-  const baseY = 760;
-  const lineHeight = 140;
-  const perWordX = [540, 540, 540, 540];
-  const perWordY = [baseY, baseY + lineHeight, baseY + (lineHeight * 2), baseY + (lineHeight * 3)];
-  const fontSize = wordIndex === emphasisIndex ? 176 : 112;
-  const rotation = wordIndex === emphasisIndex ? 0 : (wordIndex % 2 === 0 ? -3 : 3);
-  const color = DEFAULT_COLORS[(groupIndex + colorIndex) % DEFAULT_COLORS.length];
+function buildStateText({ words, activeWordIndex, groupIndex, section }) {
+  const layout = getSectionLayout(section);
+  const lines = wrapWords(words, layout);
+  const blockOverride = `\\an7\\pos(${layout.anchorX},${layout.anchorY})`;
+  const text = lines.map((lineWords, lineIndex) => buildLineText({
+    lineWords,
+    activeWordIndex,
+    groupIndex,
+    lineIndex,
+    layout,
+  })).join('\\N');
 
-  return `\\an5\\pos(${perWordX[wordIndex] ?? 540},${perWordY[wordIndex] ?? (baseY + (wordIndex * lineHeight))})\\fs${fontSize}\\bord18\\shad0\\frz${rotation}\\1c${color}`;
+  return `{${blockOverride}}${text}`;
 }
 
 function buildDialogueLines(groups, section) {
   const lines = [];
 
   groups.forEach((group, groupIndex) => {
-    const emphasisIndex = pickEmphasisIndex(group);
-    const groupStart = Number(group[0]?.start || 0);
-    const groupEnd = Number(group[group.length - 1]?.end || groupStart + 0.4);
-    const holdEnd = groupEnd + (section === 'black_screen' ? 0.2 : 0.12);
+    const groupEnd = Number(group[group.length - 1]?.end || group[0]?.start || 0.4);
+    const holdEnd = groupEnd + (section === 'black_screen' ? 0.28 : 0.18);
 
     group.forEach((word, wordIndex) => {
-      const text = getWordText(word).toUpperCase();
-      const overrides = section === 'black_screen'
-        ? buildBlackScreenOverrides(groupIndex, wordIndex, emphasisIndex, wordIndex)
-        : buildTalkingAvatarOverrides(groupIndex, wordIndex, emphasisIndex, wordIndex);
+      const start = Number(word.start || 0);
+      const nextStart = Number(group[wordIndex + 1]?.start || holdEnd);
+      const end = Math.max(start + 0.08, nextStart);
+      const stateWords = group.slice(0, wordIndex + 1);
+      const stateText = buildStateText({
+        words: stateWords,
+        activeWordIndex: word.index,
+        groupIndex,
+        section,
+      });
 
-      const start = clamp(groupStart, 0, holdEnd);
-      const end = clamp(holdEnd, start + 0.08, holdEnd);
-
-      lines.push(`Dialogue: 0,${toAssTime(start)},${toAssTime(end)},Main,,0,0,0,,{${overrides}}${text}`);
+      lines.push(`Dialogue: 0,${toAssTime(start)},${toAssTime(end)},Main,,0,0,0,,${stateText}`);
     });
   });
 
@@ -153,7 +191,7 @@ export function buildAssFromWords({
 
   const styles = `[V4+ Styles]
 Format: Name,Fontname,Fontsize,PrimaryColour,SecondaryColour,OutlineColour,BackColour,Bold,Italic,Underline,StrikeOut,ScaleX,ScaleY,Spacing,Angle,BorderStyle,Outline,Shadow,Alignment,MarginL,MarginR,MarginV,Encoding
-Style: Main,${fontName},120,&H0037F3FF,&H0037F3FF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,18,0,5,32,32,180,1
+Style: Main,${fontName},120,&H0037F3FF,&H0037F3FF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,18,0,7,32,32,180,1
 `;
 
   const events = `[Events]
