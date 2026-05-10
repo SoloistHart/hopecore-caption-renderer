@@ -41,7 +41,9 @@ jobs:
         run: npm ci
 
       - name: Debug payload shape
-        run: echo '${{ toJson(github.event.client_payload) }}'
+        env:
+          CLIENT_PAYLOAD_JSON: ${{ toJson(github.event.client_payload) }}
+        run: printf '%s\n' "$CLIENT_PAYLOAD_JSON"
 
       - name: Validate manual payload input
         if: ${{ github.event_name == 'workflow_dispatch' && !inputs.render_payload_json }}
