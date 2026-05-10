@@ -16,7 +16,7 @@ const backgroundStyle = {
 
 function getSubjectFrame(width, height) {
   const side = Math.round(Math.min(width * 0.78, height * 0.42));
-  const top = Math.round(height * 0.12);
+  const top = Math.round((height - side) / 2);
   const left = Math.round((width - side) / 2);
 
   return {
@@ -172,6 +172,7 @@ export const HopecoreAct1Act2 = ({
                 width: '100%',
                 height: '100%',
                 backgroundColor: '#000000',
+                objectPosition: 'center center',
                 transform: 'scale(1.06)',
               }}
             />
