@@ -1,0 +1,26 @@
+{
+  "name": "caption-renderer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone hopecore caption renderer worker powered by Remotion.",
+  "dependencies": {
+    "@remotion/bundler": "4.0.457",
+    "@remotion/media": "4.0.457",
+    "@remotion/renderer": "4.0.457",
+    "@aws-sdk/client-s3": "^3.863.0",
+    "@aws-sdk/s3-request-presigner": "^3.863.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "remotion": "4.0.457"
+  },
+  "scripts": {
+    "preview": "powershell -ExecutionPolicy Bypass -File ./preview.ps1",
+    "render": "node src/render-job.js",
+    "studio": "remotion studio src/index.jsx",
+    "check": "node --check src/caption-model.js && node --check src/render-job.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

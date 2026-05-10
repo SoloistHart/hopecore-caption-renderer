@@ -1,0 +1,74 @@
+name: Render Hopecore Caption
+
+on:
+  repository_dispatch:
+    types: [render-hopecore-caption]
+  workflow_dispatch:
+    inputs:
+      render_payload_json:
+        description: JSON payload to pass directly to the renderer for manual runs
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      B2_BUCKET: ${{ secrets.B2_BUCKET }}
+      B2_ENDPOINT: ${{ secrets.B2_ENDPOINT }}
+      B2_KEY_ID: ${{ secrets.B2_KEY_ID }}
+      B2_APPLICATION_KEY: ${{ secrets.B2_APPLICATION_KEY }}
+      B2_REGION: ${{ secrets.B2_REGION }}
+      B2_KEY_PREFIX: ${{ secrets.B2_KEY_PREFIX }}
+      B2_DOWNLOAD_URL_TTL_SECONDS: ${{ secrets.B2_DOWNLOAD_URL_TTL_SECONDS }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Debug payload shape
+        run: echo '${{ toJson(github.event.client_payload) }}'
+
+      - name: Validate manual payload input
+        if: ${{ github.event_name == 'workflow_dispatch' && !inputs.render_payload_json }}
+        run: |
+          echo "workflow_dispatch requires the render_payload_json input."
+          exit 1
+
+      - name: Smoke-test callback when no upload target is configured
+        if: ${{ github.event_name == 'repository_dispatch' && !github.event.client_payload.upload_url && !env.B2_BUCKET }}
+        env:
+          CALLBACK_URL: ${{ github.event.client_payload.callback_url }}
+          CALLBACK_SECRET: ${{ github.event.client_payload.callback_secret }}
+          JOB_ID: ${{ github.event.client_payload.job_id }}
+        run: |
+          if [ -z "$CALLBACK_URL" ] || [ -z "$JOB_ID" ]; then
+            echo "Skipping smoke-test callback because callback_url or job_id is missing."
+            exit 0
+          fi
+
+          curl -X POST "$CALLBACK_URL" \
+            -H "Content-Type: application/json" \
+            -H "x-renderer-secret: $CALLBACK_SECRET" \
+            -d "{\"job_id\":\"$JOB_ID\",\"status\":\"completed\",\"act1_act2_captioned_url\":\"https://example.com/test.mp4\",\"mode\":\"smoke-test\"}"
+
+      - name: Run renderer
+        if: ${{ (github.event_name == 'workflow_dispatch' && inputs.render_payload_json) || github.event.client_payload.upload_url || env.B2_BUCKET }}
+        env:
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          RENDER_PAYLOAD_JSON: ${{ inputs.render_payload_json }}
+        run: node src/render-job.js

@@ -1,0 +1,1123 @@
+[
+  {
+    "theme": "resenting unexpected phone calls when texting exists",
+    "emotion_angle": "surprise-call anxiety turning into petty rage at basic phone etiquette",
+    "hook_line": "Stop calling me out of nowhere.",
+    "talking_head_script": "If you call me out of nowhere, I already resent the conversation.",
+    "black_screen_script": "Now my heart's racing over a coupon question you absolutely could've typed like a civilized person.",
+    "voice_style": "frustrated but funny, amused exasperation",
+    "caption_style_preset": "bold uppercase rainbow word-by-word",
+    "target_duration": 13,
+    "word_timing_json": null,
+    "voice_url": null,
+    "render_payload": null,
+    "render_url": null,
+    "post_caption": "Text first. Respect my blood pressure.",
+    "status": "draft",
+    "id": 10,
+    "createdAt": "2026-05-03T11:05:17.998Z",
+    "updatedAt": "2026-05-03T11:05:17.998Z",
+    "tts_text": "If you call me out of nowhere, I already resent the conversation. - Now my heart's racing over a coupon question you absolutely could've typed like a civilized person.",
+    "voice_clone_id": 2,
+    "voice_clone_name": "old_male_02",
+    "voice_clone_emotion": "frustrated but funny, amused exasperation, energetic punchline delivery\n",
+    "voice_clone_usage_count": 0,
+    "selected_voice_link": "https://res.cloudinary.com/dxtlydlrv/video/upload/v1777801082/5b3154b5-9147-4292-8933-7231b9ad6274-u1_vocals_e396fc01-deb0-4931-a0e5-9e2873149668_kmfvej.mp3",
+    "voice_link": "https://res.cloudinary.com/dxtlydlrv/video/upload/v1777801082/5b3154b5-9147-4292-8933-7231b9ad6274-u1_vocals_e396fc01-deb0-4931-a0e5-9e2873149668_kmfvej.mp3",
+    "transcript_text": "",
+    "words": [
+      {
+        "word": "If",
+        "start": 0,
+        "end": 0.74,
+        "index": 0
+      },
+      {
+        "word": "you",
+        "start": 0.74,
+        "end": 0.94,
+        "index": 1
+      },
+      {
+        "word": "call",
+        "start": 0.94,
+        "end": 1.2,
+        "index": 2
+      },
+      {
+        "word": "me",
+        "start": 1.2,
+        "end": 1.4,
+        "index": 3
+      },
+      {
+        "word": "out",
+        "start": 1.4,
+        "end": 1.5,
+        "index": 4
+      },
+      {
+        "word": "of",
+        "start": 1.5,
+        "end": 1.7,
+        "index": 5
+      },
+      {
+        "word": "nowhere",
+        "start": 1.7,
+        "end": 2.08,
+        "index": 6
+      },
+      {
+        "word": "I",
+        "start": 2.52,
+        "end": 2.76,
+        "index": 7
+      },
+      {
+        "word": "already",
+        "start": 2.76,
+        "end": 3.22,
+        "index": 8
+      },
+      {
+        "word": "resent",
+        "start": 3.22,
+        "end": 3.54,
+        "index": 9
+      },
+      {
+        "word": "the",
+        "start": 3.54,
+        "end": 3.74,
+        "index": 10
+      },
+      {
+        "word": "conversation",
+        "start": 3.74,
+        "end": 4.46,
+        "index": 11
+      },
+      {
+        "word": "Now",
+        "start": 5.3,
+        "end": 5.44,
+        "index": 12
+      },
+      {
+        "word": "my",
+        "start": 5.44,
+        "end": 5.7,
+        "index": 13
+      },
+      {
+        "word": "heart's",
+        "start": 5.7,
+        "end": 6.12,
+        "index": 14
+      },
+      {
+        "word": "racing",
+        "start": 6.12,
+        "end": 6.46,
+        "index": 15
+      },
+      {
+        "word": "over",
+        "start": 6.46,
+        "end": 6.72,
+        "index": 16
+      },
+      {
+        "word": "a",
+        "start": 6.72,
+        "end": 7,
+        "index": 17
+      },
+      {
+        "word": "coupon",
+        "start": 7,
+        "end": 7.2,
+        "index": 18
+      },
+      {
+        "word": "question",
+        "start": 7.2,
+        "end": 7.6,
+        "index": 19
+      },
+      {
+        "word": "you",
+        "start": 7.6,
+        "end": 7.86,
+        "index": 20
+      },
+      {
+        "word": "absolutely",
+        "start": 7.86,
+        "end": 8.56,
+        "index": 21
+      },
+      {
+        "word": "could've",
+        "start": 8.56,
+        "end": 9.38,
+        "index": 22
+      },
+      {
+        "word": "typed",
+        "start": 9.38,
+        "end": 9.38,
+        "index": 23
+      },
+      {
+        "word": "like",
+        "start": 9.38,
+        "end": 9.88,
+        "index": 24
+      },
+      {
+        "word": "a",
+        "start": 9.88,
+        "end": 10.14,
+        "index": 25
+      },
+      {
+        "word": "civilized",
+        "start": 10.14,
+        "end": 10.62,
+        "index": 26
+      },
+      {
+        "word": "person",
+        "start": 10.62,
+        "end": 11.04,
+        "index": 27
+      }
+    ],
+    "talking_words": [
+      {
+        "word": "If",
+        "start": 0,
+        "end": 0.74,
+        "index": 0,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "you",
+        "start": 0.74,
+        "end": 0.94,
+        "index": 1,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "call",
+        "start": 0.94,
+        "end": 1.2,
+        "index": 2,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "me",
+        "start": 1.2,
+        "end": 1.4,
+        "index": 3,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "out",
+        "start": 1.4,
+        "end": 1.5,
+        "index": 4,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "of",
+        "start": 1.5,
+        "end": 1.7,
+        "index": 5,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "nowhere",
+        "start": 1.7,
+        "end": 2.08,
+        "index": 6,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "I",
+        "start": 2.52,
+        "end": 2.76,
+        "index": 7,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "already",
+        "start": 2.76,
+        "end": 3.22,
+        "index": 8,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "resent",
+        "start": 3.22,
+        "end": 3.54,
+        "index": 9,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "the",
+        "start": 3.54,
+        "end": 3.74,
+        "index": 10,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "conversation",
+        "start": 3.74,
+        "end": 4.46,
+        "index": 11,
+        "section": "talking_avatar"
+      }
+    ],
+    "black_screen_words": [
+      {
+        "word": "Now",
+        "start": 5.3,
+        "end": 5.44,
+        "index": 12,
+        "section": "black_screen"
+      },
+      {
+        "word": "my",
+        "start": 5.44,
+        "end": 5.7,
+        "index": 13,
+        "section": "black_screen"
+      },
+      {
+        "word": "heart's",
+        "start": 5.7,
+        "end": 6.12,
+        "index": 14,
+        "section": "black_screen"
+      },
+      {
+        "word": "racing",
+        "start": 6.12,
+        "end": 6.46,
+        "index": 15,
+        "section": "black_screen"
+      },
+      {
+        "word": "over",
+        "start": 6.46,
+        "end": 6.72,
+        "index": 16,
+        "section": "black_screen"
+      },
+      {
+        "word": "a",
+        "start": 6.72,
+        "end": 7,
+        "index": 17,
+        "section": "black_screen"
+      },
+      {
+        "word": "coupon",
+        "start": 7,
+        "end": 7.2,
+        "index": 18,
+        "section": "black_screen"
+      },
+      {
+        "word": "question",
+        "start": 7.2,
+        "end": 7.6,
+        "index": 19,
+        "section": "black_screen"
+      },
+      {
+        "word": "you",
+        "start": 7.6,
+        "end": 7.86,
+        "index": 20,
+        "section": "black_screen"
+      },
+      {
+        "word": "absolutely",
+        "start": 7.86,
+        "end": 8.56,
+        "index": 21,
+        "section": "black_screen"
+      },
+      {
+        "word": "could've",
+        "start": 8.56,
+        "end": 9.38,
+        "index": 22,
+        "section": "black_screen"
+      },
+      {
+        "word": "typed",
+        "start": 9.38,
+        "end": 9.38,
+        "index": 23,
+        "section": "black_screen"
+      },
+      {
+        "word": "like",
+        "start": 9.38,
+        "end": 9.88,
+        "index": 24,
+        "section": "black_screen"
+      },
+      {
+        "word": "a",
+        "start": 9.88,
+        "end": 10.14,
+        "index": 25,
+        "section": "black_screen"
+      },
+      {
+        "word": "civilized",
+        "start": 10.14,
+        "end": 10.62,
+        "index": 26,
+        "section": "black_screen"
+      },
+      {
+        "word": "person",
+        "start": 10.62,
+        "end": 11.04,
+        "index": 27,
+        "section": "black_screen"
+      }
+    ],
+    "timed_words": [
+      {
+        "word": "If",
+        "start": 0,
+        "end": 0.74,
+        "index": 0,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "you",
+        "start": 0.74,
+        "end": 0.94,
+        "index": 1,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "call",
+        "start": 0.94,
+        "end": 1.2,
+        "index": 2,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "me",
+        "start": 1.2,
+        "end": 1.4,
+        "index": 3,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "out",
+        "start": 1.4,
+        "end": 1.5,
+        "index": 4,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "of",
+        "start": 1.5,
+        "end": 1.7,
+        "index": 5,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "nowhere",
+        "start": 1.7,
+        "end": 2.08,
+        "index": 6,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "I",
+        "start": 2.52,
+        "end": 2.76,
+        "index": 7,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "already",
+        "start": 2.76,
+        "end": 3.22,
+        "index": 8,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "resent",
+        "start": 3.22,
+        "end": 3.54,
+        "index": 9,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "the",
+        "start": 3.54,
+        "end": 3.74,
+        "index": 10,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "conversation",
+        "start": 3.74,
+        "end": 4.46,
+        "index": 11,
+        "section": "talking_avatar"
+      },
+      {
+        "word": "Now",
+        "start": 5.3,
+        "end": 5.44,
+        "index": 12,
+        "section": "black_screen"
+      },
+      {
+        "word": "my",
+        "start": 5.44,
+        "end": 5.7,
+        "index": 13,
+        "section": "black_screen"
+      },
+      {
+        "word": "heart's",
+        "start": 5.7,
+        "end": 6.12,
+        "index": 14,
+        "section": "black_screen"
+      },
+      {
+        "word": "racing",
+        "start": 6.12,
+        "end": 6.46,
+        "index": 15,
+        "section": "black_screen"
+      },
+      {
+        "word": "over",
+        "start": 6.46,
+        "end": 6.72,
+        "index": 16,
+        "section": "black_screen"
+      },
+      {
+        "word": "a",
+        "start": 6.72,
+        "end": 7,
+        "index": 17,
+        "section": "black_screen"
+      },
+      {
+        "word": "coupon",
+        "start": 7,
+        "end": 7.2,
+        "index": 18,
+        "section": "black_screen"
+      },
+      {
+        "word": "question",
+        "start": 7.2,
+        "end": 7.6,
+        "index": 19,
+        "section": "black_screen"
+      },
+      {
+        "word": "you",
+        "start": 7.6,
+        "end": 7.86,
+        "index": 20,
+        "section": "black_screen"
+      },
+      {
+        "word": "absolutely",
+        "start": 7.86,
+        "end": 8.56,
+        "index": 21,
+        "section": "black_screen"
+      },
+      {
+        "word": "could've",
+        "start": 8.56,
+        "end": 9.38,
+        "index": 22,
+        "section": "black_screen"
+      },
+      {
+        "word": "typed",
+        "start": 9.38,
+        "end": 9.38,
+        "index": 23,
+        "section": "black_screen"
+      },
+      {
+        "word": "like",
+        "start": 9.38,
+        "end": 9.88,
+        "index": 24,
+        "section": "black_screen"
+      },
+      {
+        "word": "a",
+        "start": 9.88,
+        "end": 10.14,
+        "index": 25,
+        "section": "black_screen"
+      },
+      {
+        "word": "civilized",
+        "start": 10.14,
+        "end": 10.62,
+        "index": 26,
+        "section": "black_screen"
+      },
+      {
+        "word": "person",
+        "start": 10.62,
+        "end": 11.04,
+        "index": 27,
+        "section": "black_screen"
+      }
+    ],
+    "timing_split": {
+      "talking_avatar_start": 0,
+      "talking_avatar_end": 4.61,
+      "talking_avatar_duration": 4.61,
+      "black_screen_start": 4.61,
+      "black_screen_end": 11.24,
+      "black_screen_duration": 6.63,
+      "voice_total_duration": 11.24,
+      "split_word_index": 12,
+      "talking_word_count": 12,
+      "black_screen_word_count": 16
+    },
+    "image_prompt": "A realistic low-quality front-facing phone camera selfie of a generic elderly East or Southeast Asian man, clearly 70 to 90 years old, centered in a square 1:1 frame with an extremely close-up awkward talking-head crop where his face fills almost the entire image, forehead nearly touching the top edge, chin nearly touching the bottom edge, cheeks and nose dominating the shot, and only a thin sliver of a warm dim indoor home background visible. He wears plain casual house clothes like an old cardigan or simple sweater. His expression is frustrated but funny with amused exasperation: furrowed brow, annoyed direct stare into the camera, tired eyes, mouth slightly open mid-sentence in a ranting shape, with just a tiny hint of knowing humor. Make him look natural and human, older and worn-in, with strong visible aging details including forehead creases, crow's feet, under-eye bags, nasolabial folds, soft jowls, age spots, pores, uneven skin texture, and a lightly oily shiny T-zone. The image should feel like a candid viral short screenshot taken on an outdated 2012-2016 Android front camera or old webcam, with slight wide-angle lens distortion, uneven warm indoor lighting, slight focus miss, mild motion blur, front-camera softness, compression artifacts, sensor noise, smeared edge detail, low dynamic range, and realistic imperfect exposure. Background should be minimal and slightly blurred, just a warm room wall, hallway, lamp glow, or cluttered home corner, with no decorative borders or padding and no readable text.",
+    "negative_prompt": "young person, female, non-Asian unless specified, glamorous, cinematic, studio lighting, beauty retouching, airbrushed skin, high fashion, sharp DSLR detail, professional portrait, clean background, centered spacious composition, full torso, wide shot, side profile, sunglasses, hat, costume, caricature, exaggerated ethnic features, culture props, phone in hand, subtitles, captions, UI, buttons, logos, watermark, readable text",
+    "gender": "elderly man",
+    "expression": "fed-up amused exasperation with an annoyed stare and slight knowing humor",
+    "camera_style": "realistic low-quality front-facing outdated Android selfie, square extreme close-up, slight wide-angle distortion",
+    "aspect_ratio": "1:1",
+    "resolution": "1k",
+    "quality": "low",
+    "old_person_image_url": "https://d2p7pge43lyniu.cloudfront.net/output/035deedb-8871-4b39-bbbf-dd8b6c82052e.png",
+    "old_person_image_response": {
+      "code": 200,
+      "message": "success",
+      "data": {
+        "id": "bc40e365d477426287b2202991762ac7",
+        "model": "openai/gpt-image-2/text-to-image",
+        "outputs": [
+          "https://d2p7pge43lyniu.cloudfront.net/output/035deedb-8871-4b39-bbbf-dd8b6c82052e.png"
+        ],
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/bc40e365d477426287b2202991762ac7/result"
+        },
+        "has_nsfw_contents": null,
+        "status": "completed",
+        "created_at": "2026-05-03T13:18:05.935Z",
+        "code": 0,
+        "error": "",
+        "executionTime": 37558,
+        "timings": {
+          "inference": 37558
+        }
+      }
+    },
+    "voice_audio_url": "https://d2p7pge43lyniu.cloudfront.net/output/d3b19566-94d0-4e95-8e44-093e7d561740-u2_63c996d1-957e-457c-aa5b-ff0f128de7f0.mp3",
+    "talking_avatar_audio_url": "https://d2p7pge43lyniu.cloudfront.net/output/d3b19566-94d0-4e95-8e44-093e7d561740-u2_63c996d1-957e-457c-aa5b-ff0f128de7f0.mp3",
+    "talking_avatar_prompt": "subtle natural head motion, gentle eye blinks, realistic elderly portrait speaking directly to camera, minimal body movement, stable framing, natural face motion, fed-up amused exasperation with an annoyed stare and slight knowing humor expression",
+    "talking_avatar_resolution": "480p",
+    "talking_avatar_seed": -1,
+    "talking_avatar_end": 4.61,
+    "talking_avatar_video_url": "https://d2p7pge43lyniu.cloudfront.net/output/adf56a25-f39a-4c74-ba02-bf511d01ca15-u2_e6cd6eee-a3d3-4662-9224-bc32efa61613.mp4",
+    "talking_avatar_response": {
+      "code": 200,
+      "message": "success",
+      "data": {
+        "id": "2613023a3c4b47efb8b135e6ad642b3d",
+        "model": "wavespeed-ai/infinitetalk",
+        "outputs": [
+          "https://d2p7pge43lyniu.cloudfront.net/output/adf56a25-f39a-4c74-ba02-bf511d01ca15-u2_e6cd6eee-a3d3-4662-9224-bc32efa61613.mp4"
+        ],
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/2613023a3c4b47efb8b135e6ad642b3d/result"
+        },
+        "status": "completed",
+        "created_at": "2026-05-03T13:18:56.428335465Z",
+        "code": 0,
+        "error": "",
+        "executionTime": 144315,
+        "timings": {
+          "inference": 144315
+        }
+      }
+    },
+    "caption_render_callback_url": "https://haaaaaaappy.app.n8n.cloud/webhook/hopecore-caption-render-callback",
+    "caption_render_callback_secret": "hopecore-caption-callback-4c8d9c3e2b6f4c71aa18",
+    "caption_render_upload_url": "",
+    "caption_render_job_id": "10-act1-act2-caption-v1",
+    "caption_render_client_payload": {
+      "job_id": "10-act1-act2-caption-v1",
+      "callback_url": "https://haaaaaaappy.app.n8n.cloud/webhook/hopecore-caption-render-callback",
+      "callback_secret": "hopecore-caption-callback-4c8d9c3e2b6f4c71aa18",
+      "upload_url": "",
+      "payload": {
+        "talking_avatar_video_url": "https://d2p7pge43lyniu.cloudfront.net/output/adf56a25-f39a-4c74-ba02-bf511d01ca15-u2_e6cd6eee-a3d3-4662-9224-bc32efa61613.mp4",
+        "voice_audio_url": "https://d2p7pge43lyniu.cloudfront.net/output/d3b19566-94d0-4e95-8e44-093e7d561740-u2_63c996d1-957e-457c-aa5b-ff0f128de7f0.mp3",
+        "timed_words": [
+          {
+            "word": "If",
+            "start": 0,
+            "end": 0.74,
+            "index": 0,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "you",
+            "start": 0.74,
+            "end": 0.94,
+            "index": 1,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "call",
+            "start": 0.94,
+            "end": 1.2,
+            "index": 2,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "me",
+            "start": 1.2,
+            "end": 1.4,
+            "index": 3,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "out",
+            "start": 1.4,
+            "end": 1.5,
+            "index": 4,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "of",
+            "start": 1.5,
+            "end": 1.7,
+            "index": 5,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "nowhere",
+            "start": 1.7,
+            "end": 2.08,
+            "index": 6,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "I",
+            "start": 2.52,
+            "end": 2.76,
+            "index": 7,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "already",
+            "start": 2.76,
+            "end": 3.22,
+            "index": 8,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "resent",
+            "start": 3.22,
+            "end": 3.54,
+            "index": 9,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "the",
+            "start": 3.54,
+            "end": 3.74,
+            "index": 10,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "conversation",
+            "start": 3.74,
+            "end": 4.46,
+            "index": 11,
+            "section": "talking_avatar"
+          },
+          {
+            "word": "Now",
+            "start": 5.3,
+            "end": 5.44,
+            "index": 12,
+            "section": "black_screen"
+          },
+          {
+            "word": "my",
+            "start": 5.44,
+            "end": 5.7,
+            "index": 13,
+            "section": "black_screen"
+          },
+          {
+            "word": "heart's",
+            "start": 5.7,
+            "end": 6.12,
+            "index": 14,
+            "section": "black_screen"
+          },
+          {
+            "word": "racing",
+            "start": 6.12,
+            "end": 6.46,
+            "index": 15,
+            "section": "black_screen"
+          },
+          {
+            "word": "over",
+            "start": 6.46,
+            "end": 6.72,
+            "index": 16,
+            "section": "black_screen"
+          },
+          {
+            "word": "a",
+            "start": 6.72,
+            "end": 7,
+            "index": 17,
+            "section": "black_screen"
+          },
+          {
+            "word": "coupon",
+            "start": 7,
+            "end": 7.2,
+            "index": 18,
+            "section": "black_screen"
+          },
+          {
+            "word": "question",
+            "start": 7.2,
+            "end": 7.6,
+            "index": 19,
+            "section": "black_screen"
+          },
+          {
+            "word": "you",
+            "start": 7.6,
+            "end": 7.86,
+            "index": 20,
+            "section": "black_screen"
+          },
+          {
+            "word": "absolutely",
+            "start": 7.86,
+            "end": 8.56,
+            "index": 21,
+            "section": "black_screen"
+          },
+          {
+            "word": "could've",
+            "start": 8.56,
+            "end": 9.38,
+            "index": 22,
+            "section": "black_screen"
+          },
+          {
+            "word": "typed",
+            "start": 9.38,
+            "end": 9.38,
+            "index": 23,
+            "section": "black_screen"
+          },
+          {
+            "word": "like",
+            "start": 9.38,
+            "end": 9.88,
+            "index": 24,
+            "section": "black_screen"
+          },
+          {
+            "word": "a",
+            "start": 9.88,
+            "end": 10.14,
+            "index": 25,
+            "section": "black_screen"
+          },
+          {
+            "word": "civilized",
+            "start": 10.14,
+            "end": 10.62,
+            "index": 26,
+            "section": "black_screen"
+          },
+          {
+            "word": "person",
+            "start": 10.62,
+            "end": 11.04,
+            "index": 27,
+            "section": "black_screen"
+          }
+        ],
+        "timing_split": {
+          "talking_avatar_start": 0,
+          "talking_avatar_end": 4.61,
+          "talking_avatar_duration": 4.61,
+          "black_screen_start": 4.61,
+          "black_screen_end": 11.24,
+          "black_screen_duration": 6.63,
+          "voice_total_duration": 11.24,
+          "split_word_index": 12,
+          "talking_word_count": 12,
+          "black_screen_word_count": 16
+        },
+        "caption_style_preset": "bold uppercase rainbow word-by-word",
+        "width": 1080,
+        "height": 1920
+      }
+    },
+    "caption_render_dispatch_body": {
+      "event_type": "render-hopecore-caption",
+      "client_payload": {
+        "job_id": "10-act1-act2-caption-v1",
+        "callback_url": "https://haaaaaaappy.app.n8n.cloud/webhook/hopecore-caption-render-callback",
+        "callback_secret": "hopecore-caption-callback-4c8d9c3e2b6f4c71aa18",
+        "upload_url": "",
+        "payload": {
+          "talking_avatar_video_url": "https://d2p7pge43lyniu.cloudfront.net/output/adf56a25-f39a-4c74-ba02-bf511d01ca15-u2_e6cd6eee-a3d3-4662-9224-bc32efa61613.mp4",
+          "voice_audio_url": "https://d2p7pge43lyniu.cloudfront.net/output/d3b19566-94d0-4e95-8e44-093e7d561740-u2_63c996d1-957e-457c-aa5b-ff0f128de7f0.mp3",
+          "timed_words": [
+            {
+              "word": "If",
+              "start": 0,
+              "end": 0.74,
+              "index": 0,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "you",
+              "start": 0.74,
+              "end": 0.94,
+              "index": 1,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "call",
+              "start": 0.94,
+              "end": 1.2,
+              "index": 2,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "me",
+              "start": 1.2,
+              "end": 1.4,
+              "index": 3,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "out",
+              "start": 1.4,
+              "end": 1.5,
+              "index": 4,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "of",
+              "start": 1.5,
+              "end": 1.7,
+              "index": 5,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "nowhere",
+              "start": 1.7,
+              "end": 2.08,
+              "index": 6,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "I",
+              "start": 2.52,
+              "end": 2.76,
+              "index": 7,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "already",
+              "start": 2.76,
+              "end": 3.22,
+              "index": 8,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "resent",
+              "start": 3.22,
+              "end": 3.54,
+              "index": 9,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "the",
+              "start": 3.54,
+              "end": 3.74,
+              "index": 10,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "conversation",
+              "start": 3.74,
+              "end": 4.46,
+              "index": 11,
+              "section": "talking_avatar"
+            },
+            {
+              "word": "Now",
+              "start": 5.3,
+              "end": 5.44,
+              "index": 12,
+              "section": "black_screen"
+            },
+            {
+              "word": "my",
+              "start": 5.44,
+              "end": 5.7,
+              "index": 13,
+              "section": "black_screen"
+            },
+            {
+              "word": "heart's",
+              "start": 5.7,
+              "end": 6.12,
+              "index": 14,
+              "section": "black_screen"
+            },
+            {
+              "word": "racing",
+              "start": 6.12,
+              "end": 6.46,
+              "index": 15,
+              "section": "black_screen"
+            },
+            {
+              "word": "over",
+              "start": 6.46,
+              "end": 6.72,
+              "index": 16,
+              "section": "black_screen"
+            },
+            {
+              "word": "a",
+              "start": 6.72,
+              "end": 7,
+              "index": 17,
+              "section": "black_screen"
+            },
+            {
+              "word": "coupon",
+              "start": 7,
+              "end": 7.2,
+              "index": 18,
+              "section": "black_screen"
+            },
+            {
+              "word": "question",
+              "start": 7.2,
+              "end": 7.6,
+              "index": 19,
+              "section": "black_screen"
+            },
+            {
+              "word": "you",
+              "start": 7.6,
+              "end": 7.86,
+              "index": 20,
+              "section": "black_screen"
+            },
+            {
+              "word": "absolutely",
+              "start": 7.86,
+              "end": 8.56,
+              "index": 21,
+              "section": "black_screen"
+            },
+            {
+              "word": "could've",
+              "start": 8.56,
+              "end": 9.38,
+              "index": 22,
+              "section": "black_screen"
+            },
+            {
+              "word": "typed",
+              "start": 9.38,
+              "end": 9.38,
+              "index": 23,
+              "section": "black_screen"
+            },
+            {
+              "word": "like",
+              "start": 9.38,
+              "end": 9.88,
+              "index": 24,
+              "section": "black_screen"
+            },
+            {
+              "word": "a",
+              "start": 9.88,
+              "end": 10.14,
+              "index": 25,
+              "section": "black_screen"
+            },
+            {
+              "word": "civilized",
+              "start": 10.14,
+              "end": 10.62,
+              "index": 26,
+              "section": "black_screen"
+            },
+            {
+              "word": "person",
+              "start": 10.62,
+              "end": 11.04,
+              "index": 27,
+              "section": "black_screen"
+            }
+          ],
+          "timing_split": {
+            "talking_avatar_start": 0,
+            "talking_avatar_end": 4.61,
+            "talking_avatar_duration": 4.61,
+            "black_screen_start": 4.61,
+            "black_screen_end": 11.24,
+            "black_screen_duration": 6.63,
+            "voice_total_duration": 11.24,
+            "split_word_index": 12,
+            "talking_word_count": 12,
+            "black_screen_word_count": 16
+          },
+          "caption_style_preset": "bold uppercase rainbow word-by-word",
+          "width": 1080,
+          "height": 1920
+        }
+      }
+    }
+  }
+]
